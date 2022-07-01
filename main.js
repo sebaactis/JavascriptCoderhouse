@@ -1,69 +1,11 @@
-/* const edadPersona = 18;     CONDICIONALES
-const dineroEnElBolsillo = 10000;
-const dineroDeLaEntrada = 1000; */
+let IngresarNumero = parseInt(prompt("Ingrese un numero del 1 al 10 para ver la tabla de ese numero"));
 
-/*if (edadPersona >= 18 && dineroEnElBolsillo >= dineroDeLaEntrada) {
-    console.log ("Bienvenido a nuestro bar");
+let mensajeTabla = "La tabla del " + IngresarNumero + " " + "es:"
+    alert(mensajeTabla);
 
-    if(edadPersona != 18) {
-        console.log ("Sos mayor de 18 pero no tenes 18")
-    }
 
-} else {
-    console.log ("No podes entrar");
+for (let i = 1; i <= 10; i++) {
+       let tablaNumero = IngresarNumero + " " + "x " + i + " " + "es: " +  (IngresarNumero * i);
+       alert(tablaNumero);    
 }
-
-*/
-
-/* if (edadPersona >= 18 || (dineroEnElBolsillo >= dineroDeLaEntrada)) {
-    console.log ("Bienvenido a nuestro bar");
-
-    if(edadPersona != 18) {
-        console.log ("Sos mayor de 18 pero no tenes 18")
-    }
-
-} else {
-    console.log ("No podes entrar");
-} */
-
-
-
-
-/* const cantidadProductoCliente = prompt("ingrese cuanto quiere del producto");
-
-
-if (cantidadProductoCliente <= 5) {
-    let colorProducto = prompt("Que color queres") 
-    if (colorProducto != "rojo" || colorProducto != "Rojo") {
-        alert("No tenemos ese color, solo tenemos Rojo");
-    }
-
-} else {
-    alert ("No contamos con stock suficiente");
-}
-
- */
-
-
-
-
-
-
-const listadoNotas = [5, 7, 3];
-
-const posicion = 1;
-
-/* listadoNotas[2]; // 3
-listadoNotas[posicion]; // 7
-listadoNotas[0]; // 5 */
-
-let sumadorDeNotas = 0;
-
-for (let i = 0; i < 3; i++) {
-
-    sumadorDeNotas = sumadorDeNotas + listadoNotas[i]; // ACUMULADOR
-    // sumadorDeNotas +- listadoNotas[i]; // ACUMULADOR RESUMIDO
-}
-
-console.log(sumadorDeNotas/3)
 
