@@ -1,4 +1,4 @@
-/* function valorPesos(pesos) {
+function valorPesos(pesos) {
     return pesos + pesos * 0.3 + pesos * 0.35;
 }
 
@@ -23,4 +23,4 @@ for (let i = 1; i < 5; i++) {
 
 }
 
-alert('Muchas gracias por participar'); */
+alert('Muchas gracias por participar');
