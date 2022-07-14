@@ -1,26 +1,60 @@
-function valorPesos(pesos) {
-    return pesos + pesos * 0.3 + pesos * 0.35;
+function Producto(idProducto, nombreProducto, precio) {
+
+    this.idProducto = idProducto;
+    this.nombreProducto = nombreProducto;
+    this.precio = precio;
+};
+
+const producto1 = new Producto(1, "Jostick Xbox Series", 15999);
+const producto2 = new Producto(2, "Bateria Xbox Series", 9999);
+const producto3 = new Producto(3, "Xbox Series S", 90000);
+const producto4 = new Producto(4, "Xbox Series X", 179999);
+const producto5 = new Producto(5, "Jostick PS5", 14999);
+const producto6 = new Producto(6, "Base Cargadora PS5", 6999);
+const producto7 = new Producto(7, "PS5 Digital", 179999);
+const producto8 = new Producto(8, "PS5", 219999);
+
+
+const carrito = [];
+
+function agregarProductoCarrito(producto) {
+
+
+    carrito.push(producto);
+    console.log(carrito);
 }
 
-alert('Bienvenido, en este simulador vas a poder ver como afectan los impuestos a las compras en moneda extranjera');
-alert('Todos los valores son representados en ARS, por favor, tengalo en cuenta a la hora de ingresar datos');
-alert('El impuesto pais es un 30% del valor original');
-alert('El impuesto ganancias es un 35% del valor original');
-alert('Para empezar, debes ingresar 5 numeros mayores a 0, y veras como aumenta el valor a raiz de los impuestos agregados');
+agregarProductoCarrito(producto1);
+agregarProductoCarrito(producto2);
+agregarProductoCarrito(producto3);
+agregarProductoCarrito(producto4);
 
 
-for (let i = 1; i < 5; i++) {
+function eliminarProductoCarrito(variableProducto) {
+    const index = carrito.indexOf(variableProducto);
 
-    let resultado = valorPesos(parseInt(prompt('Ingrese un precio en pesos')))
-
-    if (resultado > 0) {
-
-        alert('Valor del producto + impuesto pais + impuesto ganancias: ' + '$' + resultado);
-    } else {
-
-        alert('No ingreso un numero valido, por favor, intente de nuevo');
+    if (index !== -1) {
+        carrito.splice(index, 1);
+        console.log(carrito)
     }
 
+    else {
+        console.log("El producto informado no esta actualmente en el carrito o no existe");
+    }
 }
 
-alert('Muchas gracias por participar');
+eliminarProductoCarrito(producto1);
+eliminarProductoCarrito(producto2);
+eliminarProductoCarrito(producto5);
+
+
+
+
+
+
+
+
+
+
+
+
