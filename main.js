@@ -19,9 +19,18 @@ const carrito = [];
 
 function agregarProductoCarrito(producto) {
 
+    let validarStock = prompt("Ingrese cuantas unidades desea de su producto");
 
-    carrito.push(producto);
-    console.log(carrito);
+    if (validarStock <= 3) {
+        carrito.push(producto);
+        console.log(carrito);
+        alert("Su producto fue agregado al carrito");
+    }
+
+    else {
+        alert("No contamos con el stock ingresado. Por favor, ingrese una cantidad menor");
+    }
+
 }
 
 agregarProductoCarrito(producto1);
@@ -48,6 +57,20 @@ eliminarProductoCarrito(producto2);
 eliminarProductoCarrito(producto5);
 
 
+function busquedaNombre() {
+    const resultadoBusquedaNombre = carrito.find((el) => el.nombreProducto === "Xbox Series S");
+    console.log(resultadoBusquedaNombre);
+}
+
+
+function busquedaPrecio() {
+    const resultadoBusquedaPrecio = carrito.filter((el) => el.precio > 100000)
+    console.log(resultadoBusquedaPrecio);
+}
+
+
+busquedaNombre();
+busquedaPrecio();
 
 
 
