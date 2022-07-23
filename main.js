@@ -67,23 +67,47 @@ const producto8 = new Producto(8, "PS5", 219999);
 
 const carrito = [];
 
-
 agregarProductoCarrito(producto1);
 agregarProductoCarrito(producto2);
 agregarProductoCarrito(producto3);
 agregarProductoCarrito(producto4);
 
 
-
-
 eliminarProductoCarrito(producto1);
 eliminarProductoCarrito(producto2);
 eliminarProductoCarrito(producto5);
 
-
-
 busquedaNombre();
 busquedaPrecio();
+
+// DOM
+
+let nombreUsuario = prompt("Escriba su nombre")
+
+let agregado = document.createElement("p");
+agregado.innerHTML = "¡Hola " + nombreUsuario + "!";
+
+const contenedorPrincipal = document.getElementById("contenedorPrincipal");
+
+contenedorPrincipal.insertBefore(agregado, contenedorPrincipal.children[1]);
+
+
+for (let productos of carrito) {
+    let contenedorProductos = document.createElement("div");
+    contenedorProductos.innerHTML =
+        `<h3>${productos.nombreProducto}</h3>
+    <p>${productos.precio}</p>
+    
+    `;
+    let body = document.querySelector("body");
+    body.insertBefore(contenedorProductos, body.children[3]);
+
+}
+
+
+
+
+
 
 
 
