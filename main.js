@@ -99,10 +99,12 @@ for (let productos of carrito) {
     <p>${productos.precio}</p>
     
     `;
-    let body = document.querySelector("body");
+    let body = document.body
     body.insertBefore(contenedorProductos, body.children[3]);
 
 }
+
+
 
 
 
