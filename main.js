@@ -4,7 +4,7 @@ const carrito = [];
 const elementosCarrito = JSON.parse(localStorage.getItem('carrito'));
 const productosCarrito = elementosCarrito;
 const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
-    document.getElementById("botonCarrito").innerHTML = `${carrito.length}  - $${total}`;
+document.getElementById("botonCarrito").innerHTML = `${carrito.length}  - $${total}`;
 
 
 
@@ -33,8 +33,12 @@ function eliminarProductoCarrito(variableProducto) {
 
     if (index !== -1) {
         carrito.splice(index, 1);
+        localStorage.setItem("carritoTotal", JSON.stringify(carrito));
+        const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
+        document.getElementById("botonCarrito").innerHTML = `${carrito.length}  - $${total}`;
         console.log(carrito)
-        alert("Producto eliminado con exito");
+        console.log("Producto eliminado con exito");
+
     }
 
     else {
