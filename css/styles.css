@@ -4,18 +4,19 @@
   background-color: #7b0000;
 }
 
-
-
-.parrafoColor {
-  margin: 0 0.5rem;
-
+#seccion-carrito {
+  margin: 2rem 2rem;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 5px;
 }
 
-#inputColor {
-  margin: 0 0.5rem;
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
-
-
 
 
 
