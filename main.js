@@ -154,6 +154,8 @@ function generarCardsCarrito() {
             <th scope="row">${producto.id}</th>
             <td>${producto.titulo}</td>
             <td>${producto.precio}</td>
+            <td> <img src=${producto.img} class="imagenesCarrito"> </td>
+            <button > <img src="./imagenes/cerrar.png"></button>
             <br>
         </tr>`
     })
