@@ -81,19 +81,23 @@ const productos = [
 
 // FUNCIONES
 
+generarCards();
+eliminarDelCarrito();
+agregarProductoCarrito();
+consultarNombre();
+
+
+
 function generarCards() {
     productos.forEach((producto) => {
         const idButtonAgregar = `add-card${producto.id}`
-        const idButtonEliminar = `delete-card${producto.id}`
         document.getElementById("seccion-carrito").innerHTML +=
             `<div class="card">
         <h4>${producto.titulo}</h4>
         <img src="${producto.img}" style="width: 15rem">
         <h5>$${producto.precio}</h5>
         <button class="botonAgregar" id="${idButtonAgregar}"  data-id="${producto.id}"> Añadir al carrito </button>
-        <button class="botonEliminar" id="${idButtonEliminar}" data-id="${producto.id}"> Eliminar del carrito </button>
         </div>`
-
     });
 
 };
@@ -122,28 +126,17 @@ function agregarProductoCarrito() {
 
 };
 
-function eliminarProductoCarrito() {
-    productos.forEach((producto) => {
-        const idButtonEliminar = `delete-card${producto.id}`
-        document.getElementById(idButtonEliminar).onclick = () => {
 
-            validacionCarrito = carrito.includes(producto);
-
-            if (validacionCarrito == true) {
-
-                carrito.splice(producto, 1);
-                const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
-                document.getElementById("botonCarrito").innerHTML = `${carrito.length}  - $${total}`;
-                localStorage.setItem("carrito", JSON.stringify(carrito));
-                console.log(carrito);
-
-            } else {
-                alert("Este producto no esta en el carrito")
-            }
-        }
-    })
-
-
+function eliminarDelCarrito(productoId) {
+ 
+    const prod = carrito.find((producto) => producto.id == productoId)
+    let i = carrito.indexOf (prod)
+    if (i != -1) {carrito.splice (i, 1)}
+    const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
+    
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    document.getElementById("botonCarrito").innerHTML = `${carrito.length}  - $${total}`;
+    generarCardsCarrito();
 }
 
 function generarCardsCarrito() {
@@ -155,7 +148,7 @@ function generarCardsCarrito() {
             <td>${producto.titulo}</td>
             <td>${producto.precio}</td>
             <td> <img src=${producto.img} class="imagenesCarrito"> </td>
-            <button > <img src="./imagenes/cerrar.png"></button>
+            <td><button type="button" class="btn btn-secondary borrar-producto" onclick="eliminarDelCarrito(${producto.id})" info-borrar="${producto.id}">Remove</button></td>
             <br>
         </tr>`
     })
@@ -173,10 +166,6 @@ function consultarNombre() {
 
 }
 
-generarCards();
-agregarProductoCarrito();
-eliminarProductoCarrito();
-consultarNombre();
 
 
 
