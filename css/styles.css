@@ -22,12 +22,33 @@
   width: 100px;
 }
 
+#filtros {
+  width: 100vw;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.filtrar-categoria {
+  margin: 0rem 5rem;
+  padding: 2rem 10rem;
+}
 
+#botonVaciarCarrito {
+  position: relative;
+  left: 10.5rem;
+}
 
+.limpiar-categoria {
+  margin: 0rem 5rem;
+  padding: 2rem 8.5rem;
+}
 
-
-
+.limpiar-categoria a {
+  text-decoration: none;
+  color: black;
+}
 
 
 

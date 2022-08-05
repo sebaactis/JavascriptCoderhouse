@@ -81,12 +81,6 @@ const productos = [
 
 // FUNCIONES
 
-generarCards();
-eliminarDelCarrito();
-agregarProductoCarrito();
-consultarNombre();
-
-
 
 function generarCards() {
     productos.forEach((producto) => {
@@ -102,6 +96,32 @@ function generarCards() {
 
 };
 
+function filtroPorCategoria(categoria) {
+    document.getElementById("seccion-carrito").innerHTML = ""
+    const productosFiltrados = productos.filter((producto) => producto.categoria === categoria);
+    productosFiltrados.forEach((producto) => {
+        const idButtonAgregar = `add-card${producto.id}`
+        document.getElementById("seccion-carrito").innerHTML +=
+            `<div class="card">
+        <h4>${producto.titulo}</h4>
+        <img src="${producto.img}" style="width: 15rem">
+        <h5>$${producto.precio}</h5>
+        <button class="botonAgregar" id="${idButtonAgregar}"  data-id="${producto.id}"> Añadir al carrito </button>
+        </div>`
+    });
+    agregarProductoCarrito();
+
+}
+
+function accionFiltrado() {
+    for (const listado of document.querySelectorAll(".filtrar-categoria")) {
+        listado.addEventListener('click', (eventoFiltrado) => {
+            const categoria = eventoFiltrado.target.getAttribute('data-categoria');
+            filtroPorCategoria(categoria)
+        })
+    }
+
+}
 
 function agregarProductoCarrito() {
     productos.forEach((producto) => {
@@ -128,12 +148,12 @@ function agregarProductoCarrito() {
 
 
 function eliminarDelCarrito(productoId) {
- 
+
     const prod = carrito.find((producto) => producto.id == productoId)
-    let i = carrito.indexOf (prod)
-    if (i != -1) {carrito.splice (i, 1)}
+    let i = carrito.indexOf(prod)
+    if (i != -1) { carrito.splice(i, 1) }
     const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
-    
+
     localStorage.setItem("carrito", JSON.stringify(carrito));
     document.getElementById("botonCarrito").innerHTML = `${carrito.length}  - $${total}`;
     generarCardsCarrito();
@@ -144,30 +164,18 @@ function generarCardsCarrito() {
     carrito.forEach((producto) => {
         document.getElementById("carritoVista").innerHTML +=
             `<tr> 
-            <th scope="row">${producto.id}</th>
-            <td>${producto.titulo}</td>
-            <td>${producto.precio}</td>
-            <td> <img src=${producto.img} class="imagenesCarrito"> </td>
-            <td><button type="button" class="btn btn-secondary borrar-producto" onclick="eliminarDelCarrito(${producto.id})" info-borrar="${producto.id}">Remove</button></td>
-            <br>
-        </tr>`
+        <td>${producto.titulo}</td>
+        <td>$${producto.precio}</td>
+        <td> <img src=${producto.img} class="imagenesCarrito"> </td>
+        <td><button type="button" class="btn btn-secondary borrar-producto" onclick="eliminarDelCarrito(${producto.id})" info-borrar="${producto.id}">Eliminar</button></td>
+    </tr>`
     })
 };
 
-function consultarNombre() {
-    let nombreUsuario = prompt("Escriba su nombre")
-
-    let agregado = document.createElement("p");
-    agregado.innerHTML = "¡Hola " + nombreUsuario + "!";
-
-    const contenedorPrincipal = document.getElementById("contenedorPrincipal");
-
-    contenedorPrincipal.insertBefore(agregado, contenedorPrincipal.children[1]);
-
-}
-
-
-
+generarCards();
+eliminarDelCarrito();
+agregarProductoCarrito();
+accionFiltrado();
 
 
 
