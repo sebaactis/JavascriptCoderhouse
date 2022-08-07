@@ -177,10 +177,15 @@ eliminarDelCarrito();
 agregarProductoCarrito();
 accionFiltrado();
 
+// OPERADORES AVANZADOS
 
+const [a] = productos
 
+console.log(a);
 
+const {titulo} = a
 
+alert("Este producto se llama :  " + titulo);
 
 
 
