@@ -140,6 +140,20 @@ function agregarProductoCarrito() {
                     <td>${producto.precio}</td>
                 </tr>`
             })
+            Toastify({
+                text: "Producto agregado al carrito",
+                duration: 2000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "linear-gradient(to right, #00b09b, #96c93d)",
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
             console.log(carrito);
         }
     })
@@ -157,6 +171,21 @@ function eliminarDelCarrito(productoId) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
     document.getElementById("botonCarrito").innerHTML = `${carrito.length}  - $${total}`;
     generarCardsCarrito();
+
+    Toastify({
+        text: "Producto eliminado del carrito",
+        duration: 2000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "linear-gradient(to right, #ff0000, #be3636)",
+        },
+        onClick: function () { } // Callback after click
+    }).showToast();
 }
 
 function generarCardsCarrito() {
@@ -170,28 +199,9 @@ function generarCardsCarrito() {
         <td><button type="button" class="btn btn-secondary borrar-producto" onclick="eliminarDelCarrito(${producto.id})" info-borrar="${producto.id}">Eliminar</button></td>
     </tr>`
     })
+
 };
 
 generarCards();
-eliminarDelCarrito();
 agregarProductoCarrito();
 accionFiltrado();
-
-// OPERADORES AVANZADOS
-
-const [a] = productos
-
-console.log(a);
-
-const {titulo} = a
-
-alert("Este producto se llama :  " + titulo);
-
-
-
-
-
-
-
-
-
