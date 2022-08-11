@@ -78,7 +78,6 @@ const productos = [
 
 ];
 
-
 // FUNCIONES
 
 
@@ -160,6 +159,31 @@ function agregarProductoCarrito() {
 
 };
 
+function borrarTodoCarrito() {
+    const borrarCarrito = document.getElementById("botonVaciarCarrito")
+    borrarCarrito.onclick = () => {
+        carrito.length = 0;
+        const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
+        document.getElementById("botonCarrito").innerHTML = `${carrito.length}  - $${total}`;
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        document.getElementById("carritoVista").innerHTML = ""
+
+        Toastify({
+            text: "Se vació el carrito por completo",
+            duration: 2000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #06a9be, #0b8798)",
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+    }
+}
 
 function eliminarDelCarrito(productoId) {
 
@@ -205,3 +229,4 @@ function generarCardsCarrito() {
 generarCards();
 agregarProductoCarrito();
 accionFiltrado();
+borrarTodoCarrito();
