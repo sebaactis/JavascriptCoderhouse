@@ -3,6 +3,8 @@ const total = carrito.reduce((acumulador, producto) => acumulador + producto.pre
 document.getElementById("botonCarrito").innerHTML = `${carrito.length}  - $${total}`;
 
 
+// ARRAY - STOCK
+
 const productos = [
     {
         id: 1,
@@ -86,8 +88,41 @@ const productos = [
 
 ];
 
+
 // FUNCIONES
 
+function baseDeDatos() {
+
+    return new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+
+            if (productos.length > 0) {
+
+                resolve(generarCards())
+
+                agregarProductoCarrito();
+                accionFiltrado();
+                borrarTodoCarrito();
+
+            } else {
+                reject(
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Te pedimos disculpas',
+                        text: 'Algo no funciono correctamente, por favor, ingrese mas tarde',
+
+                    })
+                )
+            }
+
+        }, 1000)
+
+
+    })
+
+}
 
 function generarCards() {
     productos.forEach((producto) => {
@@ -116,7 +151,7 @@ function filtroPorCategoria(categoria) {
         <h5>$${producto.precio}</h5>
         <button class="botonAgregar" id="${idButtonAgregar}"  data-id="${producto.id}"> Añadir al carrito </button>
         </div>`
-        
+
     });
     agregarProductoCarrito()
 };
@@ -134,7 +169,7 @@ function accionFiltrado() {
 function agregarProductoCarrito() {
     productos.forEach((producto) => {
         const idButtonAgregar = `add-card${producto.id}`
-        
+
         document.getElementById(idButtonAgregar).onclick = () => {
             carrito.push(producto);
             const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0)
@@ -239,7 +274,7 @@ function generarCardsCarrito() {
 
 };
 
-generarCards();
-agregarProductoCarrito();
-accionFiltrado();
-borrarTodoCarrito();
+
+// LLAMADOS FUNCIONES
+
+baseDeDatos();
