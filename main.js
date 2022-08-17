@@ -254,7 +254,8 @@ baseDeDatos()
 
 // API
 
-const apiDolarBlue = () => {
+function apiDolarBlue () {
+	
 	fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
 		.then(res => res.json())
 		.then(response => {
