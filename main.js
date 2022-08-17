@@ -4,6 +4,7 @@ const carrito = JSON.parse(localStorage.getItem("carrito")) || []
 const contenedorDeProductos = document.getElementById("seccion-carrito")
 const botonVaciarCarrito = document.getElementById("botonVaciarCarrito")
 const filtro = document.getElementById("filtros")
+const contenedorDolar = document.getElementById("dolarBlueSeccion")
 
 // Eventos
 contenedorDeProductos?.addEventListener("click", (e) => {
@@ -127,7 +128,7 @@ function agregarProductoCarrito(productoClickeado) {
 		style: {
 			background: "linear-gradient(to right, #00b09b, #96c93d)",
 		},
-		onClick: function () {}, // Callback after click
+		onClick: function () { }, // Callback after click
 	}).showToast()
 
 	localStorage.setItem("carrito", JSON.stringify(carrito))
@@ -152,7 +153,7 @@ function borrarTodoCarrito() {
 		style: {
 			background: "linear-gradient(to right, #06a9be, #0b8798)",
 		},
-		onClick: function () {}, // Callback after click
+		onClick: function () { }, // Callback after click
 	}).showToast()
 }
 
@@ -179,10 +180,10 @@ function eliminarDelCarrito(productoId) {
 		style: {
 			background: "linear-gradient(to right, #ff0000, #be3636)",
 		},
-		onClick: function () {}, // Callback after click
+		onClick: function () { }, // Callback after click
 	}).showToast()
 }
-2
+
 function generarCardsCarrito(arrayCarrito) {
 	document.getElementById("carritoVista").innerHTML = ""
 	arrayCarrito.forEach((producto) => {
@@ -249,4 +250,29 @@ function baseDeDatos() {
 }
 
 baseDeDatos()
+
+
+// API
+
+const apiDolarBlue = () => {
+	fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
+		.then(res => res.json())
+		.then(response => {
+			console.log(response)
+			const cotizacionDolarBlue = (response[1])
+			console.log(cotizacionDolarBlue)
+
+			contenedorDolar.innerHTML =
+				`<h5 style="margin: 2rem 0rem" class= "d-flex justify-content-center" >Te dejamos la cotizacion del dolar, aceptamos dolares al valor del dolar blue del dia.</h5>
+				<div class="card d-flex justify-content-center d-inline bg-danger bg-gradient"> 
+					<p> COTIZACION DOLAR COMPRADOR </p> <p><strong> ${cotizacionDolarBlue.casa.compra} </strong></p>
+					<p> COTIZACION DOLAR VENTA </p> <p> <strong>${cotizacionDolarBlue.casa.venta} </strong></p>
+				</div>`
+
+
+		})
+
+}
+
+apiDolarBlue();
 
