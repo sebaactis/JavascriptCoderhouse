@@ -5,6 +5,7 @@ const contenedorDeProductos = document.getElementById("seccion-carrito")
 const botonVaciarCarrito = document.getElementById("botonVaciarCarrito")
 const filtro = document.getElementById("filtros")
 const contenedorDolar = document.getElementById("dolarBlueSeccion")
+const contenedorCarrito = document.getElementById("carritoVista")
 
 // Eventos
 contenedorDeProductos?.addEventListener("click", (e) => {
@@ -140,6 +141,8 @@ function borrarTodoCarrito() {
 	carrito.length = 0
 	localStorage.setItem("carrito", JSON.stringify(carrito))
 	updateTotal(carrito)
+	contenedorCarrito.innerHTML = ""
+	
 
 	Toastify({
 		text: "Se vació el carrito por completo",
