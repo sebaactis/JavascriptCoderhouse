@@ -6,6 +6,8 @@ const botonVaciarCarrito = document.getElementById("botonVaciarCarrito")
 const filtro = document.getElementById("filtros")
 const contenedorDolar = document.getElementById("dolarBlueSeccion")
 const contenedorCarrito = document.getElementById("carritoVista")
+const botonFinalizarCompra = document.getElementById("botonFinalizarCompra");
+
 
 // Eventos
 contenedorDeProductos?.addEventListener("click", (e) => {
@@ -16,12 +18,15 @@ contenedorDeProductos?.addEventListener("click", (e) => {
 
 botonVaciarCarrito?.addEventListener("click", borrarTodoCarrito)
 
+
 filtro?.addEventListener("click", (e) => {
 	if (e.target.classList.contains("filtro")) {
 		const categoriaFiltro = e.target.dataset.filter // data-filter
 		filtroPorCategoria(categoriaFiltro)
 	}
 })
+
+botonFinalizarCompra?.addEventListener("click", finalizarCompra)
 
 // ARRAY - STOCK
 
@@ -142,7 +147,7 @@ function borrarTodoCarrito() {
 	localStorage.setItem("carrito", JSON.stringify(carrito))
 	updateTotal(carrito)
 	contenedorCarrito.innerHTML = ""
-	
+
 
 	Toastify({
 		text: "Se vació el carrito por completo",
@@ -158,6 +163,21 @@ function borrarTodoCarrito() {
 		},
 		onClick: function () { }, // Callback after click
 	}).showToast()
+}
+
+function finalizarCompra() {
+
+	carrito.length = 0
+	localStorage.setItem("carrito", JSON.stringify(carrito))
+	updateTotal(carrito)
+	contenedorCarrito.innerHTML = ""
+
+	Swal.fire({
+		icon: 'success',
+		title: 'Listo!',
+		text: 'Su compra ha finalizado correctamente. Gracias por confiar en nosotros.',
+	})
+
 }
 
 function eliminarDelCarrito(productoId) {
@@ -257,8 +277,8 @@ baseDeDatos()
 
 // API
 
-function apiDolarBlue () {
-	
+function apiDolarBlue() {
+
 	fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
 		.then(res => res.json())
 		.then(response => {

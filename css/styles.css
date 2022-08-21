@@ -35,13 +35,14 @@
 
 #botonVaciarCarrito {
   position: relative;
-  left: 10.5rem;
+  left: 4rem;
+
 }
 
 .limpiar-filtros {
   text-decoration: none;
   color: black;
-  
+
 }
 
 .limpiar-filtros:hover {
@@ -62,7 +63,18 @@
 
 #dolarBlueSeccion {
   margin: 2rem 2rem;
-  
+
+}
+
+#botonFinalizarCompra {
+  position: relative;
+  left: 8rem;
+
+}
+
+#footerCarrito {
+
+  margin-top: 1rem;
 }
 
 
