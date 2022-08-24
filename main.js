@@ -231,7 +231,7 @@ function generarCards(productosRender) {
             <h4>${producto.titulo}</h4>
             <img src="${producto.img}" style="width: 15rem">
             <h5>$${producto.precio}</h5>
-            <button class="botonAgregar" id="${idButtonAgregar}"  data-id="${producto.id}"> Añadir al carrito </button>
+            <button class="botonAgregar btn btn-dark" id="${idButtonAgregar}"  data-id="${producto.id}"> Añadir al carrito </button>
         </div>`
 	})
 	contenedorDeProductos.innerHTML = acumulador
