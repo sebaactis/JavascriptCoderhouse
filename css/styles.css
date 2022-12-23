@@ -10,6 +10,10 @@
   gap: 5px;
 }
 
+#carritoVista tr td {
+  font-weight: bold;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -12320,6 +12324,48 @@ fieldset:disabled .btn {
     margin: 5rem 0;
   }
 
-  
 }
 
+@media only screen and (max-width: 487px) {
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+
+  #botonVaciarCarrito {
+    left: 0;
+    margin: 1rem 0;
+    width: 30%;
+  }
+
+  #botonFinalizarCompra {
+    left: 0;
+    width: 30%;
+  }
+
+
+  #carritoVista {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #carritoVista tr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+  }
+
+
+  .tablaCarrito {
+    display: none;
+  }
+
+}

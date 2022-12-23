@@ -79,11 +79,12 @@
 	<!-- Button trigger modal -->
 
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade modalResponsive" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Productos</h5>
+					<h5 class="modal-title tituloModal" id="exampleModalLabel">Productos</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -97,11 +98,13 @@
 							</tr>
 						</thead>
 						<tbody id="carritoVista">
-							<button id="botonVaciarCarrito" class="btn btn-danger">Vaciar el carrito</button>
-							<button id="botonFinalizarCompra" class="btn btn-danger">Finalizar Compra</button>
+							<div class="buttons">
+								<button id="botonVaciarCarrito" class="btn btn-danger">Vaciar el carrito</button>
+								<button id="botonFinalizarCompra" class="btn btn-danger">Finalizar Compra</button>
+							</div>
 						</tbody>
 						<tfoot>
-							
+
 						</tfoot>
 					</table>
 				</div>
